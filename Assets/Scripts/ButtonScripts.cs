@@ -62,12 +62,16 @@ public class ButtonScripts : MonoBehaviour
     {
         PlayButtonSound();
         print("Normal");
+        if (GameObject.FindGameObjectsWithTag("HackNormal").Length >= 1) return;
+        Instantiate(NormalModePanel, CanvasRef.transform);
     }
 
     public void HardModeClicked()
     {
         PlayButtonSound();
         print("Hard");
+        if (GameObject.FindGameObjectsWithTag("HackHard").Length >= 1) return;
+        Instantiate(HardModePanel, CanvasRef.transform);
     }
 
 
@@ -75,5 +79,13 @@ public class ButtonScripts : MonoBehaviour
     void PlayButtonSound()
     {
         SManager.PlayClickSound();
+    }
+
+
+    public void ShutdownButton()
+    {
+        // Destroy(gameObject);
+        PlayButtonSound();
+        Application.Quit();
     }
 }

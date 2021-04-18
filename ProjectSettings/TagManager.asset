@@ -10,6 +10,10 @@ TagManager:
   - HackNormal
   - HackHard
   - HackingCanvas
+  - ChancesText
+  - TimerText
+  - TimeUsedText
+  - HackingArea
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,10 @@ public class ColumnScript : MonoBehaviour
     // key of this column 
     public string keychar;
 
+    // alphabet
     string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    public float RollingInterval;
 
     void Start()
     {
@@ -28,18 +31,12 @@ public class ColumnScript : MonoBehaviour
 
     void Update()
     {
-        // if Hacked stop rolling the column
-        if (Hacked)
-        {
-            CancelInvoke(nameof(RandomizeArray));
-        }
     }
 
 
 
     void InitTextArray()
     {
-        keychar = "S";
 
         // get all child char and push them into child array
         for (var i = 0; i < transform.childCount; i++)
@@ -51,7 +48,7 @@ public class ColumnScript : MonoBehaviour
         }
 
         // start the rolling
-        InvokeRepeating(nameof(RandomizeArray), 0.0f, 1.0f);
+        InvokeRepeating(nameof(RandomizeArray), 0.0f, RollingInterval);
 
 
     }
@@ -67,6 +64,10 @@ public class ColumnScript : MonoBehaviour
         // if same text selected, return
         if (PreviousSelectedText == rand)return;
 
+        // set random selection color to red and text to key
+        rand.color = Color.red;
+        rand.text = keychar;
+        // print(rand.text);
 
         // set all other letter to random
         foreach (var item in TextArray)
@@ -80,10 +81,6 @@ public class ColumnScript : MonoBehaviour
 
         
 
-        // set random selection color to red and text to key
-        rand.color = Color.red;
-        rand.text = keychar;
-        // print(rand.text);
 
 
         // set previous random result
@@ -124,7 +121,18 @@ public class ColumnScript : MonoBehaviour
     }
 
 
+    // stop rolling if hacked
+    public void SetHacked()
+    {
+        Hacked = true;
+        CancelInvoke(nameof(RandomizeArray));
 
+    }
 
-
+    // start rolling if unhacked
+    public void SetUnHacked()
+    {
+        Hacked = false;
+        InvokeRepeating(nameof(RandomizeArray), 0.0f, 1.0f);
+    }
 }

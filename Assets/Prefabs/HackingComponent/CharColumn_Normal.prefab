@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6875104170436673717}
   - component: {fileID: 603520437100104216}
   m_Layer: 5
-  m_Name: CharColumn
+  m_Name: CharColumn_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,6 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ff56202271c5e4abeaf9a0aa335fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TextArray: []
+  Hacked: 0
+  keychar: 
+  RollingInterval: 0.5
 --- !u!1 &2288391023455891519
 GameObject:
   m_ObjectHideFlags: 0

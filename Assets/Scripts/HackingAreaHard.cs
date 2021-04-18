@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 
 
-public class HackingArea : MonoBehaviour
+public class HackingAreaHard : MonoBehaviour
 {
     // key phrases
-    string[] phrases = {"FUBAR", "HCKDD", "BRUTE", "GOTYA", "BREAK"};
+    string[] phrases = {"YARHACKEDLOL", "DONTMESWITME", "BRUTEFORCEED", "FINNAHACKYAR", "SCURTYBREACH"};
 
     // sound manager ref
     SoundManager SManager;
 
     // pass word characters colums ref and count
     public GameObject columnRef;
-    int EasyColCount = 5;
+    int HardColCount = 12;
     
     // list of all column
     public List<GameObject> ColumnArray;
@@ -24,7 +24,7 @@ public class HackingArea : MonoBehaviour
     int CursorPosition = 0;
 
     // chances
-    int EasyChances = 3;
+    int HardChances = 10;
     int Chances;
     Text ChancesText;
     
@@ -53,7 +53,7 @@ public class HackingArea : MonoBehaviour
         SManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
 
         // set total chances
-        Chances = EasyChances;
+        Chances = HardChances;
 
         // set ui ref
         ChancesText = GameObject.FindGameObjectWithTag("ChancesText").GetComponent<Text>();
@@ -65,7 +65,7 @@ public class HackingArea : MonoBehaviour
 
 
         // add columns to the hacking area
-        for (var i = 0; i < EasyColCount; i++)
+        for (var i = 0; i < HardColCount; i++)
         {
             // create column
             var temp = Instantiate(columnRef, transform);
@@ -85,22 +85,6 @@ public class HackingArea : MonoBehaviour
 
     void Update()
     {
-        
-        // // left arrow
-        // if (Input.GetKeyDown(KeyCode.LeftArrow))
-        // {
-
-
-        // }
-
-        // // right arrow
-        // if (Input.GetKeyDown(KeyCode.RightArrow))
-        // {
-
-
-        // }
-
-
         // enter key
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -152,11 +136,11 @@ public class HackingArea : MonoBehaviour
         // if failed dont move
         if (Chances <= 0)return;
 
+
         // get cursored column script
         var temp = ColumnArray[CursorPosition].GetComponent<ColumnScript>();
-        var condition = temp.TextArray[1].text == temp.keychar && temp.TextArray[1].color == Color.red;
+        var condition = temp.TextArray[2].text == temp.keychar && temp.TextArray[2].color == Color.red;
         
-
 
 
         // if pick success, goto next column
@@ -164,7 +148,7 @@ public class HackingArea : MonoBehaviour
         {
             temp.SetHacked();
 
-            if (CursorPosition >= EasyColCount - 1)
+            if (CursorPosition >= HardColCount - 1)
             {
                 // Hacking succeed
                 print("succeed");

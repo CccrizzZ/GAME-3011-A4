@@ -787,8 +787,8 @@ MonoBehaviour:
   CanvasRef: {fileID: 0}
   MyComputerPrefab: {fileID: 0}
   EasyModePanel: {fileID: 6141652510927859114, guid: 84b5ea574ad86a144a8bb10e95a0c25d, type: 3}
-  NormalModePanel: {fileID: 0}
-  HardModePanel: {fileID: 0}
+  NormalModePanel: {fileID: 6141652510927859114, guid: 788ce61a60f1c59408e9d003b7706fe5, type: 3}
+  HardModePanel: {fileID: 6141652510927859114, guid: 07d8ad72fdb0a2443bd02764ac7b4368, type: 3}
 --- !u!1 &7250773176784414247
 GameObject:
   m_ObjectHideFlags: 0
